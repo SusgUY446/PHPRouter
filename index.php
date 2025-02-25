@@ -32,7 +32,7 @@
         }
     }
 
-    // go trough yeah file found and check if they match the request
+    // go trough each file found and check if they match the request
     foreach ($files as $file) {
         if (pathinfo($file, PATHINFO_EXTENSION) === 'php' && '/' . pathinfo($file, PATHINFO_FILENAME) == $request) {
             require __DIR__ . $pages_dir . $file;
