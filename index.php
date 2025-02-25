@@ -15,15 +15,12 @@
     // if the root page is visited, serve home.php, index.php, or main.php
     if ($request == '/') {
         if (file_exists(__DIR__ . $pages_dir . 'index.php')) {
-            echo "index.php exists.<br>";
             require __DIR__ . $pages_dir . 'index.php';
             exit();
         } elseif (file_exists(__DIR__ . $pages_dir . 'home.php')) {
-            echo "home.php exists.<br>";
             require __DIR__ . $pages_dir . 'home.php';
             exit();
         } elseif (file_exists(__DIR__ . $pages_dir . 'main.php')) {
-            echo "main.php exists.<br>";
             require __DIR__ . $pages_dir . 'main.php';
             exit();
         } else {
