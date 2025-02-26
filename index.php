@@ -24,7 +24,11 @@
             require __DIR__ . $pages_dir . 'main.php';
             exit();
         } else {
-            echo "No root page found.<br>";
+            if (file_exists(__DIR__ . $pages_dir . '404.php')) {
+                require __DIR__ . $pages_dir . '404.php';
+            } else {
+                echo 'Page not found.<br>';
+            }
             exit();
         }
     }
@@ -33,7 +37,13 @@
     foreach ($files as $file) {
         if (pathinfo($file, PATHINFO_EXTENSION) === 'php' && '/' . pathinfo($file, PATHINFO_FILENAME) == $request) {
             require __DIR__ . $pages_dir . $file;
-            break;
+            exit();
         }
+    }
+
+    if (file_exists(__DIR__ . $pages_dir . '404.php')) {
+        require __DIR__ . $pages_dir . '404.php';
+    } else {
+        echo 'Page not found.<br>';
     }
 ?>
